@@ -1,5 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Information
+This application is built on blockstack technology and is completely decentralized and encrypted.
+
 ## Available Scripts
 
 In the project directory, you can run:
