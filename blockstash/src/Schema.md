@@ -1,12 +1,14 @@
 This is what I'm thinking in terms of schema
 
 id : {
+    name : string,
     dateCreated : date,
     lastSaved : date and time,
     parent : id of parent || null,              [Every object will have this]                       
-    children : [array of id's for children],    [only if its a folder type]
+    children : [array of id's for children],    [only if its a folder type][might not need this either]
     type : type of file,                        [required]
     data : base64 data,                         [will be used if fileType is not a folder]
+    id : same as id above,
 }
 
 const arr = [object1, object2, object3];
