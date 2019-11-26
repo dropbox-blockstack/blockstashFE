@@ -6,12 +6,10 @@ export default class Signin extends Component {
     const { handleSignIn } = this.props;
 
     return (
-      <div className="panel-landing" id="section-1">
-        <h1 className="landing-heading">Hello, Blockstack!</h1>
-        <p className="lead">
+      <div>
+        <h1>Hello, Blockstack!</h1>
+        <p>
           <button
-            className="btn btn-primary btn-lg"
-            id="signin-button"
             onClick={ handleSignIn.bind(this) }
           >
             Sign In with Blockstack

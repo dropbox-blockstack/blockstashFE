@@ -26,15 +26,13 @@ export default class Profile extends Component {
     const { person } = this.state;
     return (
       !userSession.isSignInPending() ?
-      <div className="panel-welcome" id="section-2">
-        <div className="avatar-section">
-          <img src={ person.avatarUrl() ? person.avatarUrl() : avatarFallbackImage } className="img-rounded avatar" id="avatar-image" alt=""/>
+      <div>
+        <div>
+          <img src={ person.avatarUrl() ? person.avatarUrl() : avatarFallbackImage } id="avatar-image" alt=""/>
         </div>
-        <h1>Hello, <span id="heading-name">{ person.name() ? person.name() : 'Nameless Person' }</span>!</h1>
-        <p className="lead">
+        <h1>Hello, <span>{ person.name() ? person.name() : 'Nameless Person' }</span>!</h1>
+        <p>
           <button
-            className="btn btn-primary btn-lg"
-            id="signout-button"
             onClick={ handleSignOut.bind(this) }
           >
             Logout
