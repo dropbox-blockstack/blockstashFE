@@ -4,7 +4,8 @@ import { BrowserRouter } from 'react-router-dom'
 import App from './App.js';
 // Redux Imports
 import {createStore, applyMiddleware} from 'redux';
-import {Privider} from 'react-redux';
+import { reducer } from './Redux/reducer';
+import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 

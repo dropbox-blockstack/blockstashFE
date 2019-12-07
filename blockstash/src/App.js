@@ -12,35 +12,38 @@ const userSession = new UserSession({ appConfig: appConfig })
 export default class App extends Component {
 
 
-  handleSignIn(e) {
-    e.preventDefault();
-    userSession.redirectToSignIn();
-  }
+	handleSignIn(e) {
+		e.preventDefault();
+		userSession.redirectToSignIn();
+	}
 
-  handleSignOut(e) {
-    e.preventDefault();
-    userSession.signUserOut(window.location.origin);
-  }
+	handleSignOut(e) {
+		e.preventDefault();
+		userSession.signUserOut(window.location.origin);
+	}
 
-  render() {
-      return (
-          <div>
-              <div>
-                  { !userSession.isUserSignedIn() 
-                      ? <Signin userSession={userSession} handleSignIn={ this.handleSignIn } />
-                      : <Profile userSession={userSession} handleSignOut={ this.handleSignOut } />
-                  }
-              </div>
-          </div>
-      );
-  }
+	render() {
+		return (
+			<div>
+				<div>
+					{ !userSession.isUserSignedIn() 
+						? <Signin userSession={userSession} handleSignIn={ this.handleSignIn } />
+						: 
+							<React.Fragment>
+								<Profile userSession={userSession} handleSignOut={ this.handleSignOut } />
+							</React.Fragment>
+					}
+				</div>
+			</div>
+		);
+	}
 
-  componentDidMount() {
-    if (userSession.isSignInPending()) {
-      userSession.handlePendingSignIn().then((userData) => {
-        window.history.replaceState({}, document.title, "/")
-        this.setState({ userData: userData})
-      });
-    }
-  }
+	componentDidMount() {
+		if (userSession.isSignInPending()) {
+		userSession.handlePendingSignIn().then((userData) => {
+			window.history.replaceState({}, document.title, "/")
+			this.setState({ userData: userData})
+		});
+		}
+	}
 }
