@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Profile from './Profile.js';
 import Signin from './Signin.js';
+import { Route } from 'react-router-dom';
 import {
   UserSession,
   AppConfig
@@ -30,7 +31,10 @@ export default class App extends Component {
 						? <Signin userSession={userSession} handleSignIn={ this.handleSignIn } />
 						: 
 							<React.Fragment>
-								<Profile userSession={userSession} handleSignOut={ this.handleSignOut } />
+								<Route path="/" render={() => <Profile userSession={userSession} handleSignOut={ this.handleSignOut } />} />
+								<Route path="/files" />
+								<Route path="/shared-files" />
+								{/* <Profile userSession={userSession} handleSignOut={ this.handleSignOut } /> */}
 							</React.Fragment>
 					}
 				</div>
