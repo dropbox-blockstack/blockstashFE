@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+// Page/Component Imports
 import Profile from './Profile.js';
 import Signin from './Signin.js';
+import SideMenu from './Components/Global/SideMenu'
 import { Route } from 'react-router-dom';
 import {
   UserSession,
@@ -31,7 +33,8 @@ export default class App extends Component {
 						? <Signin userSession={userSession} handleSignIn={ this.handleSignIn } />
 						: 
 							<React.Fragment>
-								<Route path="/" render={() => <Profile userSession={userSession} handleSignOut={ this.handleSignOut } />} />
+								<Route path="/" render={() => <SideMenu />}/>
+								<Route path="/profile" render={() => <Profile userSession={userSession} handleSignOut={ this.handleSignOut } />} />
 								<Route path="/files" />
 								<Route path="/shared-files" />
 								{/* <Profile userSession={userSession} handleSignOut={ this.handleSignOut } /> */}
