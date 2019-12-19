@@ -2,12 +2,16 @@ import React, { Component } from 'react';
 // Page/Component Imports
 import Profile from './Profile.js';
 import Signin from './Signin.js';
-import SideMenu from './Components/Global/SideMenu'
+import SideMenu from './Components/Global/SideMenu';
+import Files from './Pages/Files';
 import { Route } from 'react-router-dom';
 import {
   UserSession,
   AppConfig
 } from 'blockstack';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const appConfig = new AppConfig()
 const userSession = new UserSession({ appConfig: appConfig })
@@ -27,21 +31,22 @@ export default class App extends Component {
 
 	render() {
 		return (
-			<div>
-				<div>
-					{ !userSession.isUserSignedIn() 
-						? <Signin userSession={userSession} handleSignIn={ this.handleSignIn } />
-						: 
-							<React.Fragment>
-								<Route path="/" render={() => <SideMenu />}/>
+			<Container>
+				{ !userSession.isUserSignedIn() 
+					? 
+						<Signin userSession={userSession} handleSignIn={ this.handleSignIn } />
+					: 
+						<Row style={{height : "100vh"}}>
+							<Route path="/" render={() => <SideMenu />}/>
+							<Col>
 								<Route path="/profile" render={() => <Profile userSession={userSession} handleSignOut={ this.handleSignOut } />} />
-								<Route path="/files" />
+								<Route path="/files" render={() => <Files /> }/>
 								<Route path="/shared-files" />
-								{/* <Profile userSession={userSession} handleSignOut={ this.handleSignOut } /> */}
-							</React.Fragment>
+							</Col>
+							{/* <Profile userSession={userSession} handleSignOut={ this.handleSignOut } /> */}
+						</Row>
 					}
-				</div>
-			</div>
+			</Container>
 		);
 	}
 

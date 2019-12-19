@@ -8,16 +8,13 @@ import { reducer } from './Redux/reducer';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
-
+// Bootstrap Import
+import 'bootstrap/dist/css/bootstrap.min.css';
 // Setting up Redux
 const store = createStore(
     reducer,
     applyMiddleware(thunk, logger)
 );
-
-// Require Sass file so webpack can build it
-// import 'bootstrap/dist/css/bootstrap.css';
-// import'./styles/style.css';
 
 ReactDOM.render(
     <Provider store={store}>
