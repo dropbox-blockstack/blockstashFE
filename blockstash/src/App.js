@@ -31,14 +31,16 @@ export default class App extends Component {
 
 	render() {
 		return (
-			<Container>
+			<Container fluid>
 				{ !userSession.isUserSignedIn() 
 					? 
 						<Signin userSession={userSession} handleSignIn={ this.handleSignIn } />
 					: 
 						<Row style={{height : "100vh"}}>
-							<Route path="/" render={() => <SideMenu />}/>
-							<Col>
+							<Col xl="2">
+								<Route path="/" render={() => <SideMenu />}/>
+							</Col>
+							<Col fluid xl="10">
 								<Route path="/profile" render={() => <Profile userSession={userSession} handleSignOut={ this.handleSignOut } />} />
 								<Route path="/files" render={() => <Files /> }/>
 								<Route path="/shared-files" />

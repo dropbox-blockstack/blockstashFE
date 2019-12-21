@@ -5,6 +5,7 @@ import Jumbotron from 'react-bootstrap/Jumbotron';
 import Row from 'react-bootstrap/Row';
 import Button from 'react-bootstrap/Button';
 import ListGroup from 'react-bootstrap/ListGroup';
+import Container from 'react-bootstrap/Container';
 
 class SideMenu extends React.Component{
 
@@ -17,7 +18,7 @@ class SideMenu extends React.Component{
 
     render(){
         return(
-            <Col lg="2" style={{border : "1px solid black"}}>
+            <Container>
                 <Jumbotron fluid>
                     <h3>BlockStash</h3>
                 </Jumbotron>
@@ -33,7 +34,7 @@ class SideMenu extends React.Component{
                     </ListGroup.Item>
                 </ListGroup>
                 
-            </Col>
+            </Container>
         )
     }
 }
